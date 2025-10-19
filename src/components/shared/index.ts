@@ -7,3 +7,6 @@ export { default as Header } from './container/header';
 export { default as Banner } from './container/banner';
 export { default as GridLayout } from './container/grid-layout';
 export { default as PageLoader } from './misc/page-loader';
+export { default as FormFile } from './inputs/files/form-file';
+export { default as FormField } from './inputs/form-field';
+export { default as FormSelect } from './inputs/form-select';

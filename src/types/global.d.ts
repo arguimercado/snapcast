@@ -1,3 +1,5 @@
+
+
 declare interface User {
   name: string;
   email: string;
@@ -294,4 +296,24 @@ interface PaginationResult<T> {
 declare interface RecordingHandlers {
   onDataAvailable: (e: BlobEvent) => void;
   onStop: () => void;
+}
+
+
+declare interface UploadState {
+  id: string | null;
+  file: File | null;
+  uploading: boolean;
+  progress: number;
+  key?: string;
+  isDeleting: boolean;
+  isError: boolean;
+  objectUrl?: string;
+  fileType: "image" | "video";
+}
+
+declare interface FileOptionProps {
+  accept?: any;
+  maxFiles?: number;
+  multiple?: boolean;
+  fileType: "image" | "video";
 }
