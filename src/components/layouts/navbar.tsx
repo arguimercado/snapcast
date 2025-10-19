@@ -4,11 +4,19 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import ROUTE from "@/constants/routes";
 import { useRouter } from "next/navigation";
+import { auth } from "@/lib/better-auth/auth";
+import { authClient } from "@/lib/better-auth/auth-client";
 
 const user = {};
 
 const Navbar = () => {
   const router = useRouter();
+  
+  const handleLogout = () => {
+    // Implement logout functionality here
+    authClient.signOut();
+    router.push(ROUTE.SIGNIN);
+  }
 
   return (
     <header className="navbar">
@@ -27,7 +35,7 @@ const Navbar = () => {
 						<Button variant={"ghost"} size={"icon"} onClick={() => router.push(ROUTE.PROFILE)}>
 							<Image src="/assets/images/dummy.jpg" alt="User Avatar" width={26} height={26} className="rounded-full aspect-square"/>
 						</Button>
-						<Button variant={"ghost"} className="cursor-pointer" size={"icon"} onClick={() => router.push(ROUTE.HOME)}>
+						<Button  variant={"ghost"} className="cursor-pointer" size={"icon"} onClick={handleLogout}>
 							<Image src="/assets/icons/logout.svg" alt="Log out" width={24} height={24} className="rotate-180" />
 						</Button>
 					</figure>
