@@ -1,11 +1,13 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../../ui/button";
+import ROUTE from "@/constants/routes";
 
 const UploadVideoAction = () => {
   return (
 	<Button variant="ghost" size="sm" asChild>
-		<Link href="/upload">
+		<Link href={ROUTE.UPLOAD}>
 			<Image
 				src="/assets/icons/upload.svg"
 				alt="Upload Icon"
