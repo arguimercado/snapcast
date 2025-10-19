@@ -1,33 +1,27 @@
-import { Header } from '@/components/layouts'
+import { MainWrapper } from '@/components/layouts'
 import React from 'react'
-import { RecordVideoAction, SearchInput, UploadVideoAction } from '@/components/shared'
-import { Input } from '@/components/ui/input'
+import { Banner, GridLayout, VideoCard } from '@/components/shared'
+import { dummyCards } from '@/constants'
 
 
-const Page = () => {
+const MainPage = () => {
   return (
-    <main className='wrapper page'>
-      <Header.Wrapper>
-        <section className="header-container">
-          <Header.Content>
-            <article>
-              <Header.SubHeader>
-                Your go-to platform for seamless video communication.
-              </Header.SubHeader>
-              <Header.Title>Welcome to Loom Clone</Header.Title>
-            </article>
-          </Header.Content>
-          <aside>
-            <UploadVideoAction />
-            <RecordVideoAction />
-          </aside>
-        </section>
-        <section className='search-filter mt-4'>
-          <SearchInput />
-        </section>
-      </Header.Wrapper>
-    </main>
+    <MainWrapper>
+      <Banner 
+        title="All Videos"
+        subtitle="Public Videos" />
+
+      <GridLayout  gap="lg"  columns={{sm: 1, md: 2, lg:3}}  >
+        {dummyCards.map((card) => (
+            <VideoCard
+              key={card.id} 
+            {...card}
+            />
+
+        ))}
+      </GridLayout>
+    </MainWrapper>
   )
 }
 
-export default Page
+export default MainPage

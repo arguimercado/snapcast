@@ -16,7 +16,7 @@ const HeaderUserImage = ({ userImage, alt }: { userImage?: string; alt?: string 
    return (
       <>
          {userImage && (
-            <Image src={userImage || '/assets/images/dummy.jpg'} alt={alt || "User Image"} width={66} height={66} className="rounded-full" />
+            <Image src={userImage} alt={alt || "User Image"} width={66} height={66} className="rounded-full" />
          )}
       </>
    );
