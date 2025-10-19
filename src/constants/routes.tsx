@@ -1,4 +1,5 @@
 const ROUTE = {
+   SIGNIN: '/sign-in',
    HOME: '/',
    PROFILE: '/profile',
    VIDEO: (videoId: string) => `/video/${videoId}`,
