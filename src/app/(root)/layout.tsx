@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 const MainLayout = async ({ children }: { children: React.ReactNode }) => {
+  
 	const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -12,9 +13,12 @@ const MainLayout = async ({ children }: { children: React.ReactNode }) => {
   if (!session) {
     return redirect(ROUTE.SIGNIN);
   }
+
+  const user = session.user;
+
   return (
 	<div>
-		<Navbar />
+		<Navbar user={user} />
 		<main>{children}</main>
 	</div>);
 };
