@@ -1,6 +1,17 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-export interface IUser extends Document {
+export interface IUser {
+   id: string;
+   name: string;
+   email: string;
+   emailVerified: boolean;
+   image?: string | null | undefined;
+   createdAt: Date;
+   updatedAt: Date;
+}
+
+
+interface IUserDocument extends Document {
    name: string;
    email: string;
    emailVerified: boolean;
@@ -9,7 +20,7 @@ export interface IUser extends Document {
    updatedAt: Date;
 }
 
-const UserSchema = new Schema<IUser>({
+const UserSchema = new Schema<IUserDocument>({
    name: { type: String, required: true },
    email: { type: String, required: true, unique: true },
    emailVerified: { type: Boolean, default: false },
@@ -21,4 +32,4 @@ const UserSchema = new Schema<IUser>({
    collection: 'users',
 });
 
-export const UserModel: mongoose.Model<IUser> = mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
+export const UserModel: mongoose.Model<IUserDocument> = mongoose.models.User || mongoose.model<IUserDocument>('User', UserSchema);

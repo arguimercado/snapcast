@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import ROUTE from "@/constants/routes";
 import { useRouter } from "next/navigation";
-import { auth } from "@/lib/better-auth/auth";
 import { authClient } from "@/lib/better-auth/auth-client";
+import { IUser } from "@/lib/db/models/users";
 
-const user = {};
 
-const Navbar = () => {
+
+const Navbar = ({user} : {user: IUser}) => {
   const router = useRouter();
   
   const handleLogout = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
 				{user && (
 					<figure className="flex items-center gap-2">
 						<Button variant={"ghost"} size={"icon"} onClick={() => router.push(ROUTE.PROFILE)}>
-							<Image src="/assets/images/dummy.jpg" alt="User Avatar" width={26} height={26} className="rounded-full aspect-square"/>
+							<Image src={user.image || "/assets/images/dummy.jpg"} alt="User Avatar" width={26} height={26} className="rounded-full aspect-square"/>
 						</Button>
 						<Button  variant={"ghost"} className="cursor-pointer" size={"icon"} onClick={handleLogout}>
 							<Image src="/assets/icons/logout.svg" alt="Log out" width={24} height={24} className="rotate-180" />
